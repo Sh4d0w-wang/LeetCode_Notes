@@ -14,3 +14,10 @@ class Solution:
         # 以count.get函数获取每个键的计数值，并根据这个计数值来确定哪个键是最大的
         # 一堆元素，通过"key"参数获取这堆元素的另外特征，找这些特征中最大的，并返回这个元素本身
         return max(counts.keys(), key = counts.get)
+    # 解法2
+    # 由于多数大于n/2，所以排完序后，取n//2的元素即可
+    # 1 1 1 2 2 2 2 --> 7//2 = 3 --> 2
+    # 1 1 1 2 --> 4//2 = 2 --> 1
+    def majorityElement_2(self, nums: List[int]) -> int:
+        nums.sort()
+        return nums[len(nums) // 2]
