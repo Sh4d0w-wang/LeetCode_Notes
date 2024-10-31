@@ -13,7 +13,7 @@
 #   [n-2阶(A)]    [n-1阶(B)]    [n阶(C)]
 #   两种情况取最小:
 #           A爬2阶+A ----> min_cost(A) + cost(C)
-#           B爬2阶+B ----> min_cost(B) + cost(B)
+#           B爬1阶+B ----> min_cost(B) + cost(B)
 # 初始值
 #   dp[0] = 0
 #   dp[1] = 0
