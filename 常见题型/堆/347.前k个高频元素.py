@@ -23,4 +23,28 @@ y       z
 高频k --> 使用小根堆,因为构建完k个元素的小根堆后,后面弹出元素时,总是弹出最小的,这样遍历一遍后,只剩最大的k个了
 低频k --> 使用大根堆
 ******
+
+******
+堆排序:将最顶元素依次排完序后弹出(每弹出一次,更新一下堆)
+******
 """
+# 使用数组存储堆
+# 下标为i的节点的父节点:(i - 1) / 2
+# 下标为i的节点的左孩子:i * 2 + 1
+# 下标为i的节点的右孩子:i * 2 + 2
+class Solution:
+    def topKFrequent(self,nums, k):
+        count = defaultdict(int)
+        for num in nums:
+            count[num] += 1
+
+        heap = []
+        for key, val in count.items():
+            if len(heap) < k:
+                heapq.heappush(heap, (val, key))
+            else:
+                if val > heap[0][0]:
+                    heapq.heappop(heap)
+                    heapq.heappush(heap, (val, key))
+
+        return [key for val, key in heap]
